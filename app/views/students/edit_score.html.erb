@@ -1,0 +1,10 @@
+<h1>Scores</h1>
+
+<div id="scores">
+  <% @scores.each do |score| %>
+    <%= render score %>
+    <%= link_to "Edit this score", edit_score_path(score.id) %> 
+    <%= button_to "Destroy this score", delete_score_path(score.id) %>
+    <p>---------------------------</p>
+  <% end %>
+</div>
