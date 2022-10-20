@@ -22,6 +22,17 @@ class StudentsController < ApplicationController
   # GET /students/1/edit_score
   def edit_score
       @scores = Score.where(student_id: params[:id])
+      total_score = 0
+      max_score = 0
+      @most_score = '-'
+      @scores.each do |score| 
+        total_score += score.point.to_i
+        if max_score < score.point.to_i
+          max_score = score.point.to_i
+          @most_score = score.subject
+        end
+      end
+      @average_score = total_score/@scores.length
   end
 
   # POST /students or /students.json
